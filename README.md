@@ -1,7 +1,7 @@
 # Python Web Scraping & Browser Automation Toolkit
 
 A Python automation toolkit for web data extraction, dynamic page interaction,
-and structured CSV export — built and tested on Kali Linux using Selenium,
+and structured CSV export — built and tested on Kali Linux and Ubuntu 24.04 using Selenium,
 BeautifulSoup4, and Requests inside an isolated virtual environment.
 
 Covers static HTML parsing, live page fetching, JavaScript-rendered page
@@ -46,7 +46,7 @@ handling via ChromeDriver, and automated data pipeline output.
 
 ## Setup
 
-Tested on **Kali Linux** with Python 3.10+.
+Tested on **Kali Linux && Ubuntu 24.04** with Python 3.10+.
 
 Create and activate an isolated virtual environment:
 
@@ -107,4 +107,4 @@ CSV output is written to `data/example_page_export.csv`.
 
 ## Environment
 
-Built and tested on **Kali Linux** · Python `venv` · VS Code with virtualenv-aware Code Runner
+Built and tested on **Kali Linux && Ubuntu 24.04** · Python `venv` · VS Code with virtualenv-aware Code Runner
