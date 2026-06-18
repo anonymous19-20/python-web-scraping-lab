@@ -1,62 +1,110 @@
-# Python Web Scraping Lab
+# Python Web Scraping & Browser Automation Toolkit
 
-A small Python practice repo for learning web scraping, HTML parsing, browser automation, and simple CSV export.
+A Python automation toolkit for web data extraction, dynamic page interaction,
+and structured CSV export — built and tested on Kali Linux using Selenium,
+BeautifulSoup4, and Requests inside an isolated virtual environment.
 
-The examples here are intentionally simple. Some scripts read local HTML files with BeautifulSoup, some fetch live pages with Requests, and a couple use Selenium to drive Chrome and inspect pages after the browser has loaded them.
+Covers static HTML parsing, live page fetching, JavaScript-rendered page
+handling via ChromeDriver, and automated data pipeline output.
 
-## What is inside
+---
 
-- `scripts/parse_local_example_link.py` reads a local Example Domain HTML file and prints its first link.
-- `scripts/parse_apache_page_text.py` reads a saved Apache default page and prints the first paragraph.
-- `scripts/fetch_example_links.py` fetches `example.com` and lists the links found on the page.
-- `scripts/export_example_page_to_csv.py` saves the title, paragraph, and first link from `example.com` into a CSV file.
-- `scripts/example_page_browser_check.py` compares a page heading from Requests with the title loaded by Selenium.
-- `scripts/google_doodles_search.py` searches Google Doodles with Selenium and prints result links.
-- `scripts/wikipedia_search_parser.py` searches Wikipedia with Selenium and prints paragraph text from the result page.
-- `scripts/file_io_reference.py` is a small file-reading example.
+## Scripts
 
-## Project layout
+| Script | What it does |
+|--------|-------------|
+| `parse_local_example_link.py` | Parses a local HTML file with BeautifulSoup4 and extracts anchor tags |
+| `parse_apache_page_text.py` | Parses a saved Apache2 default page and extracts paragraph content |
+| `fetch_example_links.py` | Fetches a live page via Requests and enumerates all links |
+| `export_example_page_to_csv.py` | Extracts title, paragraph, and link from a live page — exports structured CSV |
+| `example_page_browser_check.py` | Cross-validates page heading between Requests response and Selenium-loaded DOM |
+| `google_doodles_search.py` | Drives Chrome via Selenium to search Google Doodles and extract result URLs |
+| `wikipedia_search_parser.py` | Automates Wikipedia search via Selenium and scrapes paragraph content from result page |
+| `file_io_reference.py` | File I/O utility reference for pipeline integration |
+
+---
+
+## Project Layout
 
 ```text
 .
 ├── data/
-│   ├── example_page_export.csv
+│   ├── example_page_export.csv     # Sample CSV output
 │   └── sample_text.txt
 ├── samples/
-│   ├── apache_default_page.html
+│   ├── apache_default_page.html    # Saved Apache2 default page for offline parsing
 │   ├── apache_default_page.css
 │   ├── example_domain.html
 │   └── example_domain.css
 ├── scripts/
-│   └── Python examples
+│   └── *.py                        # All automation scripts
 ├── requirements.txt
 └── README.md
 ```
 
+---
+
 ## Setup
 
-Create and activate a virtual environment:
+Tested on **Kali Linux** with Python 3.10+.
+
+Create and activate an isolated virtual environment:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 ```
 
-Install the dependencies:
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-The Selenium examples also need Google Chrome and a compatible ChromeDriver available on your system.
+Selenium scripts require **Google Chrome** and a matching **ChromeDriver** binary on your `$PATH`:
 
-## Running examples
+```bash
+# Verify ChromeDriver is available
+chromedriver --version
+```
+
+---
+
+## Running
 
 ```bash
 cd scripts
+
+# Fetch live page and list links
 python fetch_example_links.py
+
+# Export structured data to CSV
 python export_example_page_to_csv.py
+
+# Parse local HTML file
 python parse_local_example_link.py
+
+# Browser automation — Google Doodles scraper
+python google_doodles_search.py
 ```
 
-The CSV export script writes its output to `data/example_page_export.csv`.
+CSV output is written to `data/example_page_export.csv`.
+
+---
+
+## Stack
+
+| Tool | Role |
+|------|------|
+| `selenium` | Browser automation — dynamic/JS-rendered pages |
+| `beautifulsoup4` | HTML parsing — static and saved pages |
+| `requests` | HTTP fetching — live pages |
+| `csv` (stdlib) | Structured data export |
+| `venv` | Isolated dependency management |
+| ChromeDriver | Headless/headed Chrome control via Selenium |
+
+---
+
+## Environment
+
+Built and tested on **Kali Linux** · Python `venv` · VS Code with virtualenv-aware Code Runner
